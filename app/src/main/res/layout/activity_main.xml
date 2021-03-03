@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorPrimary"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        tools:context=".ui.standby.StandByFragment">
+
+        <EditText
+            android:id="@+id/searchInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rounded_bg"
+            android:drawableStart="@drawable/ic_baseline_search_24"
+            android:drawablePadding="12dp"
+            android:hint="Search coin pair"
+            android:padding="12dp"
+            android:textColor="?attr/colorOnSecondary"
+            app:layout_constraintEnd_toStartOf="@id/filterButton"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/filterButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rounded_bg"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/searchInput"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_filter_alt_24" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/rounded_top_bg"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchInput">
+
+            <TextView
+                android:id="@+id/coinLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintHorizontal_weight="1.3"
+                android:text="Coin"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginStart="16dp"
+                android:textColor="?attr/colorSecondaryVariant"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/fundingRatesLabel"
+                app:layout_constraintBottom_toTopOf="@id/coinsDataRecyclerView"/>
+
+            <TextView
+                android:id="@+id/fundingRatesLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintHorizontal_weight="2"
+                android:text="Last funding rates"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:textColor="?attr/colorSecondaryVariant"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/coinLabel"
+                app:layout_constraintEnd_toStartOf="@id/scoreLabel"
+                app:layout_constraintBottom_toTopOf="@id/coinsDataRecyclerView"/>
+
+
+            <TextView
+                android:id="@+id/scoreLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintHorizontal_weight="1"
+                android:text="Score"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textAlignment="textEnd"
+                android:layout_marginEnd="16dp"
+                android:textColor="?attr/colorSecondaryVariant"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/fundingRatesLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/coinsDataRecyclerView"/>
+
+            <View
+                android:id="@+id/separatorView"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                app:layout_constraintTop_toBottomOf="@id/coinLabel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp"
+                android:background="?attr/colorOnSecondary"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/coinsDataRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/separatorView"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:listitem="@layout/activity_main_item" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
