@@ -10,4 +10,9 @@ import java.io.Serializable
 data class FundingRate(
     var fundingRate: Double = 0.0,
     var fundingTime: Long = 0,
-): Serializable, Parcelable
+): Serializable, Parcelable{
+
+    override fun toString(): String {
+        return "$fundingTime - $fundingRate\n"
+    }
+}

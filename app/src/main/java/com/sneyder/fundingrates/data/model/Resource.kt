@@ -2,7 +2,7 @@ package com.sneyder.fundingrates.data.model
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.Query
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.*
@@ -17,7 +17,7 @@ sealed class Resource<T>(
 }
 
 @ExperimentalCoroutinesApi
-inline fun <reified T>CollectionReference.asFlow(): Flow<List<T>> {
+inline fun <reified T> Query.asFlow(): Flow<List<T>> {
     return callbackFlow {
         val subscription =
             this@asFlow.addSnapshotListener { value, error ->
@@ -42,6 +42,7 @@ fun <T> Flow<T>.asResource(
         collect { emit(Resource.Success(it)) }
     } catch (e: Exception) {
         emit(Resource.Failure<T>(e))
+
         e.printStackTrace()
     }
 

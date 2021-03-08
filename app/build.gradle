@@ -14,8 +14,8 @@ android {
     applicationId "com.sneyder.fundingrates"
     minSdkVersion 21
     targetSdkVersion 29
-    versionCode 1
-    versionName "1.0"
+    versionCode 2
+    versionName "2.0"
     multiDexEnabled true
 
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -86,7 +86,7 @@ dependencies {
   // Firestore
   implementation "com.google.firebase:firebase-firestore-ktx"
 
-  // GraphView
-  implementation 'com.jjoe64:graphview:4.2.2'
+  //MPAndroidChart
+  implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
 }

@@ -26,7 +26,7 @@ class AppFundingRatesRepository
     @ExperimentalCoroutinesApi
     override fun fetchFundingRates(symbol: String): Flow<Resource<List<FundingRate>>> {
         debug("fetchFundingRates $symbol")
-        return firebaseFirestore.collection("pairs/$symbol/fundingRates")
+        return firebaseFirestore.collection("pairs/$symbol/fundingRates").orderBy("fundingRate").limitToLast(90)
             .asFlow<FundingRate>()
             .flowOn(Dispatchers.IO)
             .asResource()

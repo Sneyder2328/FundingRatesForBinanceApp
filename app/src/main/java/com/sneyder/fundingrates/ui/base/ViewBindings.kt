@@ -21,6 +21,24 @@ fun TextView.score(coinData: CoinData, scoreRange: Int) {
     text = d.toString()
 }
 
+@BindingAdapter(value = ["labelledScore", "labelledScoreRange"])
+fun TextView.scoreWithLabel(coinData: CoinData, scoreRange: Int) {
+    val factor = 10.0.pow(2.0)
+    val d = (coinData.getScoreForSorting(scoreRange) * factor).roundToInt() / factor
+    val s = when (scoreRange) {
+        0 -> "7d"
+        1 -> "14d"
+        else -> "30d"
+    }
+    val spannableString = SpannableString("$s Score: \n$d")
+    spannableString.setSpan(
+        StyleSpan(BOLD),
+        spannableString.toString().indexOf(":"), spannableString.length,
+        Spannable.SPAN_INCLUSIVE_EXCLUSIVE
+    )
+    text = spannableString
+}
+
 @BindingAdapter(value = ["roundPercentage"])
 fun TextView.roundPercentage(number: Double) {
     val factor = 10.0.pow(3.0)
