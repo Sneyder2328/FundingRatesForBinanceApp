@@ -2,6 +2,7 @@ package com.sneyder.fundingrates.ui.main
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -30,6 +31,7 @@ class MainActivity : BaseActivity(), FilterOptionsDialog.SelectFilterOptionsList
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this@MainActivity
         binding.coinsDataRecyclerView.apply {
